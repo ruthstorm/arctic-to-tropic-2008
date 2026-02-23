@@ -556,7 +556,9 @@
 									<h4>Arctic Explorer Answers Polar Expedition Questions | Tech Support | WIRED</h4>
 								</section>
 								<section>
-									<iframe width="560" height="315" src="https://www.youtube.com/embed/oRiOFMTgHho?si=kuaDgdaIC09gQmp9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+									<div class="youtube-player-wrap">
+										<div id="youtube-player" class="youtube-player" aria-label="YouTube video player"></div>
+									</div>
 								</section>
 
 							</div>
@@ -573,6 +575,28 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/render-copy-json.js"></script>
+			<script src="https://www.youtube.com/iframe_api"></script>
+			<script>
+				let ytPlayer;
+
+				function onYouTubeIframeAPIReady() {
+					ytPlayer = new YT.Player('youtube-player', {
+						videoId: 'oRiOFMTgHho',
+						playerVars: {
+							rel: 0,
+							modestbranding: 1,
+							playsinline: 1
+						},
+						events: {
+							onReady: onYouTubePlayerReady
+						}
+					});
+				}
+
+				function onYouTubePlayerReady(event) {
+					event.target.setVolume(100);
+				}
+			</script>
 
 	</body>
 </html>
